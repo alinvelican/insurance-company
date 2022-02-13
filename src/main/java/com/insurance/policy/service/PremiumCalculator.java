@@ -2,11 +2,10 @@ package com.insurance.policy.service;
 
 import com.insurance.policy.model.Policy;
 import com.insurance.policy.model.PolicyCost;
-import com.insurance.policy.model.Risk;
+import com.insurance.policy.risk.Risk;
 import com.insurance.policy.model.SubObject;
 import org.springframework.stereotype.Service;
 
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,19 +14,28 @@ import java.util.stream.Collectors;
 public class PremiumCalculator implements CostCalculator {
     @Override
     public PolicyCost calculate(Policy policy) {
-        var cost = policy.groupSubObjectsByRisk().entrySet().stream()
-                .map(entry -> {
-                        var risk = Risk.of(entry.getKey());
-                        var subObjectsCost = getSubObjectsCost(entry.getValue());
-                        return risk.compute(subObjectsCost);
-                    }
-                )
-                .reduce(0.0, Double::sum);
+        var subObjectsGroupedByRisk = policy.groupSubObjectsByRisk();
 
-        return PolicyCost.of(cost);
+        var cost = subObjectsGroupedByRisk.entrySet().stream()
+                .map(this::getRiskCost)
+                .mapToDouble(d -> d)
+                .sum();
+
+        return PolicyCost.of(cost, policy);
+    }
+
+    private double getRiskCost(Map.Entry<Risk, List<SubObject>> riskSubObjectsPair) {
+        var risk = riskSubObjectsPair.getKey();
+        var subObjects = riskSubObjectsPair.getValue();
+        var subObjectsCost = getSubObjectsCost(subObjects);
+
+        return risk.compute(subObjectsCost);
     }
 
     private double getSubObjectsCost(List<SubObject> subObjects) {
-        return subObjects.stream().map(SubObject::cost).reduce(0.0, Double::sum);
+        return subObjects.stream()
+                .map(SubObject::getCost)
+                .mapToDouble(d -> d)
+                .sum();
     }
 }

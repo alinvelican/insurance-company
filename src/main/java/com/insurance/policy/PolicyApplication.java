@@ -13,16 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@AllArgsConstructor
-class Test {
-	CostCalculator calculator;
-	@PostMapping("/test")
-	PolicyCost all(@RequestBody Policy policy) {
-		return calculator.calculate(policy);
-	}
-}
-
 @SpringBootApplication
 public class PolicyApplication {
 

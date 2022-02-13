@@ -1,6 +1,11 @@
-package com.insurance.policy.model;
+package com.insurance.policy.risk;
 
-public class TheftRisk implements Risk {
+public class TheftRisk extends Risk {
+
+    TheftRisk(Type type) {
+        super(type);
+    }
+
     @Override
     public double compute(double sumInsured) {
         if (sumInsured >= 15) {

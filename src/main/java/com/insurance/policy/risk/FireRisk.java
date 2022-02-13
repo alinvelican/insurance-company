@@ -1,6 +1,11 @@
-package com.insurance.policy.model;
+package com.insurance.policy.risk;
 
-public class FireRisk implements Risk {
+public class FireRisk extends Risk {
+
+    FireRisk(Risk.Type type) {
+        super(type);
+    }
+
     @Override
     public double compute(double sumInsured) {
         if (sumInsured > 100) {
