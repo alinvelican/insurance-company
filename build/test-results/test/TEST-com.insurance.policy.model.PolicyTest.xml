@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.insurance.policy.model.PolicyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-02-15T17:18:02" hostname="192-168-0-102.rdsnet.ro" time="0.008">
+  <properties/>
+  <testcase name="should_Return_No_Group_And_No_SubObject_When_Empty_List_Objects()" classname="com.insurance.policy.model.PolicyTest" time="0.005"/>
+  <testcase name="should_Return_Multiple_Groups()" classname="com.insurance.policy.model.PolicyTest" time="0.001"/>
+  <testcase name="should_Return_No_Group_And_No_SubObject_When_Empty_List_SubObjects()" classname="com.insurance.policy.model.PolicyTest" time="0.0"/>
+  <testcase name="should_Return_1_SubObject()" classname="com.insurance.policy.model.PolicyTest" time="0.001"/>
+  <testcase name="should_Return_1_Group()" classname="com.insurance.policy.model.PolicyTest" time="0.001"/>
+  <testcase name="should_Return_Multiple_SubObjects()" classname="com.insurance.policy.model.PolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

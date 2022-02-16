@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class PremiumCalculator implements CostCalculator {
+
     @Override
     public PolicyCost calculate(Policy policy) {
         var subObjectsGroupedByRisk = policy.groupSubObjectsByRisk();
