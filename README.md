@@ -5,8 +5,11 @@ Use Java 17 and run
 **./gradlew bootRun**
 
 ##Use the application
+
 In a HTTP client(postman or curl) make a POST call to http://localhost:8080/compute-cost 
+
 ###Body:
+
 ```yaml
 {
   "number": "aaa",
@@ -36,7 +39,8 @@ In a HTTP client(postman or curl) make a POST call to http://localhost:8080/comp
 }
 ```
 
-##CURL:
+##CURL
+
 ```shell
 curl --location --request POST 'localhost:8080/compute-cost' \
 --header 'Content-Type: application/json' \
@@ -67,6 +71,7 @@ curl --location --request POST 'localhost:8080/compute-cost' \
     ]
 }'
 ```
+
 ## Entry point
 The entry point of the application is **/compute-cost** endpoint 
 
